@@ -111,7 +111,7 @@ function dayHtml(d,compact){
   const items = D ? D.l.map(l => ({s:l.s,h:'<div class="card les' + (l.st !== 'done' ? ' off' : '') + '" style="--lc:' + (l.p ? 'var(--c5)' : ic(l.i)) + '"><div class="t">' + hm(l.s) + '<small>' + hm(l.e) + ' · ' + (l.e - l.s) + '′</small></div><div class="w"><b>' + esc(l.n.join(' + ') || '—') + '</b>' + badge(l) + (l.i ? '<div class="mu">' + esc(l.i) + '</div>' : '') + '</div></div>'}))
     .concat(D.ev.map(e => ({s:e.s,h:'<div class="card les ev"><div class="t">' + hm(e.s) + '<small>' + hm(e.e) + '</small></div><div class="w mu">' + esc(e.t) + '</div></div>'}))).sort((a,b) => a.s - b.s) : [];
   items.forEach(i => out.push(i.h));
-  if (!items.length && !(D && D.c)){ out.push('<div class="mu" style="padding:8px 2px">' + (d < addD(A.today,-7) || d > addD(A.today,120) ? 'Fuori dal periodo caricato.' : 'Nessuna lezione.') + '</div>'); }
+  if (!items.length && !(D && D.c)){ out.push('<div class="mu" style="padding:8px 2px">' + (d < (A.from || addD(A.today,-7)) || d > (A.to || addD(A.today,120)) ? 'Fuori dal periodo caricato.' : 'Nessuna lezione.') + '</div>'); }
   return out.join('');
 }
 function viewO(){
