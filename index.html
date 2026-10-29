@@ -103,7 +103,7 @@ async function open(pw,remember,silent){
 }
 function badge(l){
   return (l.st === 'absent_student' ? '<span class="tag bad">allievo assente</span>' : l.st === 'absent_teacher' ? '<span class="tag bad">insegnante assente</span>' : l.st === 'cancelled' ? '<span class="tag bad">annullata</span>' : '')
-    + (l.r ? '<span class="tag">recupero</span>' : '') + (l.p ? '<span class="tag pv">privato</span>' : '');
+    + (l.r ? '<span class="tag">recupero</span>' : '') + (l.x ? '<span class="tag warn">+' + l.x + '′ recupero</span>' : '') + (l.p ? '<span class="tag pv">privato</span>' : '');
 }
 function dayHtml(d,compact){
   const D = A.days.find(x => x.d === d), out = [];
